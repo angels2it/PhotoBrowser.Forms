@@ -5,7 +5,7 @@ Full screen image viewer(Xamarin.Forms) that includes "pinch to zoom" and "swipe
 [![NuGet](https://img.shields.io/nuget/v/PhotoBrowser.Forms.svg)](https://www.nuget.org/packages/PhotoBrowser.Forms/)
 
 Supports Android and iOS.
-* Android library from : https://github.com/stfalcon-studio/FrescoImageViewer
+* Android library from : https://github.com/angels2it/FrescoImageViewer
 * iOS library from : https://github.com/mwaterfall/MWPhotoBrowser
 
 ## Features
@@ -59,6 +59,11 @@ In AppDelegate.cs file
             {
                 URL = "https://raw.githubusercontent.com/stfalcon-studio/FrescoImageViewer/v.0.5.0/images/posters/Korben.jpg",
                 Title = "Korben"
+            },
+			new Photo
+            {
+                URL = "https://upload.wikimedia.org/wikipedia/commons/f/f7/Bananas.svg",
+                Title = "Banana"
             }
         },
         ActionButtonPressed = (index) =>

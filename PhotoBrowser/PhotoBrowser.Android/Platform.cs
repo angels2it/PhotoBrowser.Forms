@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Com.Facebook.Drawee.Backends.Pipeline;
 using Xamarin.Forms;
+using Com.Stfalcon.Frescoimageviewer;
 
 namespace Stormlion.PhotoBrowser.Droid
 {
@@ -22,7 +23,7 @@ namespace Stormlion.PhotoBrowser.Droid
         {
             Context = context;
 
-            Fresco.Initialize(Context);
+            ImageViewer.Init(context);
 
             DependencyService.Register<PhotoBrowserImplementation>();
         }

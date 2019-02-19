@@ -69,6 +69,11 @@ namespace Test
                     {
                         URL = "https://raw.githubusercontent.com/stfalcon-studio/FrescoImageViewer/v.0.5.0/images/posters/Daniel.jpg",
                         Title = "Daniel"
+                    },
+                    new Photo
+                    {
+                        URL = "https://upload.wikimedia.org/wikipedia/commons/f/f7/Bananas.svg",
+                        Title = "Banana"
                     }
                 },
                 ActionButtonPressed = (index) =>
