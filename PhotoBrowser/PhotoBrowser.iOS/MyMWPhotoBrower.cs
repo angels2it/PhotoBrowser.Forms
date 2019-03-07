@@ -1,4 +1,6 @@
-﻿using Ricardo.LibMWPhotoBrowser.iOS;
+﻿using FFImageLoading;
+using FFImageLoading.Svg.Platform;
+using Ricardo.LibMWPhotoBrowser.iOS;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,15 +19,28 @@ namespace Stormlion.PhotoBrowser.iOS
             _photoBrowser = photoBrowser;
         }
 
-        public void Show()
+        public async void Show()
         {
             _photos = new List<MWPhoto>();
 
             foreach (Photo p in _photoBrowser.Photos)
             {
-                MWPhoto mp = MWPhoto.FromUrl(new Foundation.NSUrl(p.URL));
+                MWPhoto mp;
+                if (p.URL.EndsWith(".svg", StringComparison.InvariantCulture))
+                {
+                    mp = MWPhoto.FromImage(
+                       await ImageService.Instance
+                           .LoadFileFromApplicationBundle(p.URL)
+                           .WithCustomDataResolver(new SvgDataResolver(0, 0, true))
+                           .WithCustomLoadingPlaceholderDataResolver(new SvgDataResolver(0, 0, true))
+                           .AsUIImageAsync());
+                }
+                else
+                {
+                    mp = MWPhoto.FromUrl(new Foundation.NSUrl(p.URL));
+                }
 
-                if(!string.IsNullOrWhiteSpace(p.Title))
+                if (!string.IsNullOrWhiteSpace(p.Title))
                 {
                     mp.Caption = p.Title;
                 }
